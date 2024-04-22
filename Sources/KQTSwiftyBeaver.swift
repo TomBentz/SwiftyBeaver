@@ -9,7 +9,7 @@
 
 import Foundation
 
-open class SwiftyBeaver {
+open class KQTSwiftyBeaver {
 
     /// version string of framework
     public static let version = "2.0.1"  // UPDATE ON RELEASE!
@@ -141,7 +141,7 @@ open class SwiftyBeaver {
     }
 
     /// custom logging to manually adjust values, should just be used by other frameworks
-    open class func custom(level: SwiftyBeaver.Level, message: @autoclosure () -> Any,
+    open class func custom(level: KQTSwiftyBeaver.Level, message: @autoclosure () -> Any,
                              file: String = #file, function: String = #function, line: Int = #line, context: Any? = nil) {
         #if swift(>=5)
         dispatch_send(level: level, message: message(), thread: threadName(),
@@ -153,7 +153,7 @@ open class SwiftyBeaver {
     }
 
     /// internal helper which dispatches send to dedicated queue if minLevel is ok
-    class func dispatch_send(level: SwiftyBeaver.Level, message: @autoclosure () -> Any,
+    class func dispatch_send(level: KQTSwiftyBeaver.Level, message: @autoclosure () -> Any,
         thread: String, file: String, function: String, line: Int, context: Any?) {
         var resolvedMessage: String?
         let destinations = queue.sync { self.destinations }
